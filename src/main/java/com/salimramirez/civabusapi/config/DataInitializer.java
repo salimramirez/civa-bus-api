@@ -56,7 +56,31 @@ public class DataInitializer {
                 bus3.setCharacteristics("Cama, WiFi, TV");
                 bus3.setActive(false);
                 bus3.setBrand(mercedes);
-                busRepository.saveAll(List.of(bus1, bus2, bus3));
+                Bus bus4 = new Bus();
+                bus4.setBusNumber("4004");
+                bus4.setPlate("DEF-234");
+                bus4.setCharacteristics("Semicama, WiFi, USB");
+                bus4.setActive(true);
+                bus4.setBrand(fiat);
+                Bus bus5 = new Bus();
+                bus5.setBusNumber("5005");
+                bus5.setPlate("GHI-567");
+                bus5.setCharacteristics("Cama Suite, WiFi, TV");
+                bus5.setActive(true);
+                bus5.setBrand(marcoPolo);
+                Bus bus6 = new Bus();
+                bus6.setBusNumber("6006");
+                bus6.setPlate("JKL-890");
+                bus6.setCharacteristics("Semicama, Aire Acondicionado");
+                bus6.setActive(false);
+                bus6.setBrand(volvo);
+                Bus bus7 = new Bus();
+                bus7.setBusNumber("7007");
+                bus7.setPlate("MNO-321");
+                bus7.setCharacteristics("Cama, WiFi, Reclinables");
+                bus7.setActive(true);
+                bus7.setBrand(mercedes);
+                busRepository.saveAll(List.of(bus1, bus2, bus3, bus4, bus5, bus6, bus7));
                 LOGGER.info("Database seeded with default buses.");
             }
         }
