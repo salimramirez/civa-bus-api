@@ -8,7 +8,7 @@ public record BusResponseDto(
         String plate,
         LocalDateTime createdAt,
         String characteristics,
-        String brandName,
+        BusBrandDto brand,
         Boolean active
 ) {
 }

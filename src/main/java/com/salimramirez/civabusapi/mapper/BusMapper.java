@@ -1,5 +1,6 @@
 package com.salimramirez.civabusapi.mapper;
 
+import com.salimramirez.civabusapi.dto.BusBrandDto;
 import com.salimramirez.civabusapi.dto.BusRequestDto;
 import com.salimramirez.civabusapi.dto.BusResponseDto;
 import com.salimramirez.civabusapi.entity.Bus;
@@ -25,7 +26,7 @@ public class BusMapper {
                 bus.getPlate(),
                 bus.getCreatedAt(),
                 bus.getCharacteristics(),
-                bus.getBrand() != null ? bus.getBrand().getName() : "No Brand",
+                new BusBrandDto(bus.getBrand().getId(), bus.getBrand().getName()),
                 bus.getActive()
         );
     }
