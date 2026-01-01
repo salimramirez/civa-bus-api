@@ -1,10 +1,10 @@
 package com.salimramirez.civabusapi.service;
 
 import com.salimramirez.civabusapi.dto.BusResponseDto;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BusService {
-    List<BusResponseDto> findAllBuses();
+    Page<BusResponseDto> findAllBuses(Pageable pageable);
     BusResponseDto findBusById(Long id);
 }
