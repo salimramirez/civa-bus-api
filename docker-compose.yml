@@ -11,5 +11,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  app:
+    build: .
+    container_name: civa-bus-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/civa_bus_db
+      - SPRING_DATASOURCE_USERNAME=salim_user
+      - SPRING_DATASOURCE_PASSWORD=salim_password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
 volumes:
   postgres_data:
