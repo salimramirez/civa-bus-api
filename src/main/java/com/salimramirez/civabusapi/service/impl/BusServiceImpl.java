@@ -6,11 +6,10 @@ import com.salimramirez.civabusapi.exception.ResourceNotFoundException;
 import com.salimramirez.civabusapi.mapper.BusMapper;
 import com.salimramirez.civabusapi.repository.BusRepository;
 import com.salimramirez.civabusapi.service.BusService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class BusServiceImpl implements BusService {
@@ -23,11 +22,9 @@ public class BusServiceImpl implements BusService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BusResponseDto> findAllBuses() {
-        return busRepository.findAll()
-                .stream()
-                .map(BusMapper::toResponseDto)
-                .collect(Collectors.toList());
+    public Page<BusResponseDto> findAllBuses(Pageable pageable) {
+        return busRepository.findAll(pageable)
+                .map(BusMapper::toResponseDto);
     }
 
     @Override
