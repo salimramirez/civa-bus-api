@@ -107,20 +107,69 @@ Todos los endpoints requieren autenticación HTTP Basic. Use las credenciales co
 
 #### 1. Obtener lista paginada de buses
 
-```bash
-GET /api/v1/bus
-```
+**Endpoint:** `GET /api/v1/bus`
 
-Parámetros de consulta opcionales:
+**Parámetros de consulta opcionales:**
 - `page`: número de página (default: 0)
 - `size`: tamaño de página (default: 5)
 - `sort`: criterio de ordenamiento (ejemplo: `busNumber,asc`)
 
-#### 2. Obtener bus por ID
+**Ejemplo con curl:**
 
 ```bash
-GET /api/v1/bus/{id}
+# Solicitud básica
+curl -u civa_user:civa_password http://localhost:8080/api/v1/bus
+
+# Con paginación personalizada
+curl -u civa_user:civa_password "http://localhost:8080/api/v1/bus?page=0&size=3"
+
+# Con ordenamiento
+curl -u civa_user:civa_password "http://localhost:8080/api/v1/bus?page=0&size=5&sort=busNumber,asc"
+
+# Con ordenamiento descendente por placa
+curl -u civa_user:civa_password "http://localhost:8080/api/v1/bus?sort=plate,desc"
 ```
+
+**Ejemplo con Postman:**
+
+1. Crear una nueva petición GET
+2. URL: `http://localhost:8080/api/v1/bus`
+3. Ir a la pestaña "Authorization"
+4. Tipo: "Basic Auth"
+5. Username: `civa_user`
+6. Password: `civa_password`
+7. (Opcional) Agregar parámetros en "Params":
+   - Key: `page`, Value: `0`
+   - Key: `size`, Value: `5`
+   - Key: `sort`, Value: `busNumber,asc`
+8. Clic en "Send"
+
+#### 2. Obtener bus por ID
+
+**Endpoint:** `GET /api/v1/bus/{id}`
+
+**Parámetros de ruta:**
+- `id`: Identificador único del bus (Long)
+
+**Ejemplo con curl:**
+
+```bash
+# Obtener bus con ID 1
+curl -u civa_user:civa_password http://localhost:8080/api/v1/bus/1
+
+# Obtener bus con ID 5
+curl -u civa_user:civa_password http://localhost:8080/api/v1/bus/5
+```
+
+**Ejemplo con Postman:**
+
+1. Crear una nueva petición GET
+2. URL: `http://localhost:8080/api/v1/bus/1`
+3. Ir a la pestaña "Authorization"
+4. Tipo: "Basic Auth"
+5. Username: `civa_user`
+6. Password: `civa_password`
+7. Clic en "Send"
 
 ### Documentación Interactiva
 
